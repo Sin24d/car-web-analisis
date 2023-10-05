@@ -4,9 +4,9 @@ app = Flask(__name__)
 
 import mysql.connector
 db_config = {
-        "host": "aws.connect.psdb.cloud",#:3606 #localhost
-        "user": "dwp8ubmsuwa4igcztoza",
-        "password": "pscale_pw_1ukdq6J8ETPmcMBX2htAgIhcj8N3ensSKPLceqUsJOr",
+        "host": "aws.connect.psdb.cloud",
+        "user": "5ck5ufwkl3f06w9nllgy",
+        "password": "pscale_pw_xG7mkqJ4sDte2cQdSKyQAWi39eXkqqV4uee9aVLhvCx",
         "database": "carsfromauctionsdb",
     }
 
