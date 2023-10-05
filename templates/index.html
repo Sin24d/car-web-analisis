@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<div class="content"
+	<h1>Main Story</h1>
+	<h2>*</h2>
+	<h1>Some Analinical Data</h1>
+  <table>
+    <caption>Main analitical info and values</caption>
+    <tbody>
+      <tr>
+        <th scope="col">indicators</th>
+        <th scope="col">Tesla 3</th>
+        <th scope="col">Tesla S</th>
+        <th scope="col">Tesla Y</th>
+      </tr>
+     {% for roow in rows %}
+      <tr>
+        <th scope="row">{{roow[0]}}</th>
+        <td><code>{{roow[1]}}</code></td>
+        <td><code>{{roow[2]}}</code></td>
+        <td><code>{{roow[3]}}</code></td>
+      </tr>
+     {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
