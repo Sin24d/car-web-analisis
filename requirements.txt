@@ -1,3 +1,6 @@
 Flask
 mysql.connector
 gunicorn
+os
+render_template
+url_for

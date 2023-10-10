@@ -1,14 +1,16 @@
 from flask import Flask,render_template,url_for
+import os
 
 app = Flask(__name__)
 
 import mysql.connector
-db_config = {
-        "host": "aws.connect.psdb.cloud",
-        "user": "7767snrd750em0jnbxfk",
-        "password": "pscale_pw_N3dHj1NpPJLk5UKDfIKuozzMwK13rerUEmSTBJZgpUx",
-        "database": "carsfromauctionsdb",
-    }
+db_config =  { 
+  "host": os.environ['host'], 
+  "user": os.environ['user'], 
+  "password": os.environ['password'], 
+  "database": os.environ['database']
+  }
+    
 
 conn = mysql.connector.connect(**db_config)
 cursor = conn.cursor()#Create a cursor to execute SQL queries:
