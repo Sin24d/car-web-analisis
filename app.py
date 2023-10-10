@@ -1,14 +1,21 @@
 from flask import Flask,render_template,url_for
+import mysql.connector
+from mysql.connector.constants import ClientFlag
 import os
 
 app = Flask(__name__)
 
-import mysql.connector
+
 db_config =  { 
   "host": os.environ['host'], 
   "user": os.environ['user'], 
   "password": os.environ['password'],
-  "database": os.environ['database']
+  "database": os.environ['database'],
+  'raise_on_warnings': True,
+  'client_flags': [ClientFlag.SSL],
+  'ssl_ca': '/opt/mysql/ssl/ca.pem',
+  #'ssl_cert': '/opt/mysql/ssl/client-cert.pem',
+  #'ssl_key': '/opt/mysql/ssl/client-key.pem'
   }
     
 
