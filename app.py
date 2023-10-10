@@ -7,7 +7,7 @@ import mysql.connector
 db_config =  { 
   "host": os.environ['host'], 
   "user": os.environ['user'], 
-  "password": os.environ['password'], 
+  "password": os.environ['password'],
   "database": os.environ['database']
   }
     
