@@ -7,10 +7,15 @@ app = Flask(__name__)
 
 
 db_config =  { 
-  "host": os.environ['host'], 
+  "host": os.environ['host'],
+  "port": 3306,
+  "database": os.environ['database'],
   "user": os.environ['user'], 
   "password": os.environ['password'],
-  "database": os.environ['database'],
+  "use_unicode": True,
+  "get_warnings": True,
+  #"sslMode" : "VERIFY_IDENTITY",
+  #"ssl":{"ca": "/etc/ssl/cert.pem"}
   #'ssl_ca': os.environ['sslcert_file'],
   #'ssl_verify_identity':True
   #'raise_on_warnings': True,
