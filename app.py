@@ -11,7 +11,8 @@ db_config =  {
   "user": os.environ['user'], 
   "password": os.environ['password'],
   "database": os.environ['database'],
-  'ssl_ca': os.environ['sslcert_file']
+  #'ssl_ca': os.environ['sslcert_file'],
+  #'ssl_verify_identity':True
   #'raise_on_warnings': True,
   #'client_flags': [ClientFlag.SSL],
   #'ssl_ca': '/opt/mysql/ssl/ca.pem',
