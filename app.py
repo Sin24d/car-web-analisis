@@ -11,9 +11,10 @@ db_config =  {
   "user": os.environ['user'], 
   "password": os.environ['password'],
   "database": os.environ['database'],
-  'raise_on_warnings': True,
-  'client_flags': [ClientFlag.SSL],
-  'ssl_ca': '/opt/mysql/ssl/ca.pem',
+  'ssl_ca': os.environ['sslcert_file']
+  #'raise_on_warnings': True,
+  #'client_flags': [ClientFlag.SSL],
+  #'ssl_ca': '/opt/mysql/ssl/ca.pem',
   #'ssl_cert': '/opt/mysql/ssl/client-cert.pem',
   #'ssl_key': '/opt/mysql/ssl/client-key.pem'
   }
