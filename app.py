@@ -1,41 +1,24 @@
 from flask import Flask,render_template,url_for
-import mysql.connector
-from mysql.connector.constants import ClientFlag
+from sqlalchemy import create_engine,text
 import os
 
 app = Flask(__name__)
+db_connection_string=os.environ['alchym']
 
+engine = create_engine(
+    db_connection_string,
+    connect_args={
+        "ssl": {
+            "ssl_ca": "/etc/ssl/cert.pem"
+        }
+})
 
-db_config =  { 
-  "host": os.environ['host'],
-  "port": 3306,
-  "database": os.environ['database'],
-  "user": os.environ['user'], 
-  "password": os.environ['password'],
-  "use_unicode": True,
-  "get_warnings": True,
-  #"sslMode" : "VERIFY_IDENTITY",
-  #"ssl":{"ca": "/etc/ssl/cert.pem"}
-  #'ssl_ca': os.environ['sslcert_file'],
-  #'ssl_verify_identity':True
-  #'raise_on_warnings': True,
-  #'client_flags': [ClientFlag.SSL],
-  #'ssl_ca': '/opt/mysql/ssl/ca.pem',
-  #'ssl_cert': '/opt/mysql/ssl/client-cert.pem',
-  #'ssl_key': '/opt/mysql/ssl/client-key.pem'
-  }
     
+with engine.connect() as conn:
+    rows = conn.execute(text("SELECT tesla3numbers.indicators, tesla3numbers.Numbers, teslasnumbers.Numbers, teslaynumbers.Numbers FROM tesla3numbers left JOIN teslasnumbers ON tesla3numbers.indicators = teslasnumbers.indicators left JOIN teslaynumbers ON tesla3numbers.indicators = teslaynumbers.indicators;"))
+  
+#print(rows[0])
 
-conn = mysql.connector.connect(**db_config)
-cursor = conn.cursor()#Create a cursor to execute SQL queries:
-
-cursor.execute("SELECT tesla3numbers.indicators, tesla3numbers.Numbers, teslasnumbers.Numbers, teslaynumbers.Numbers FROM tesla3numbers left JOIN teslasnumbers ON tesla3numbers.indicators = teslasnumbers.indicators left JOIN teslaynumbers ON tesla3numbers.indicators = teslaynumbers.indicators;")
-
-rows = cursor.fetchall()
-print(rows[0])
-
-cursor.close()
-conn.close()
 
 @app.route('/')
 def index():
